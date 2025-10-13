@@ -4,10 +4,10 @@ A flexible, plug-and-play learning framework for **Godot 4** that enables rapid 
 
 ## ✨ Features
 
-- **🎯 Modular Game Systems**
-  - Clickable System (multiple choice, selection-based games)
-  - Drag-and-Drop System (sorting, matching, placement games)
-  - Mix-and-Match System (connection-based, relationship games)
+- **🎯 Modular Game Systems** (inherit from these to create your minigames)
+  - **Clickable System** - Multiple choice, selection-based games
+  - **Drag-and-Drop System** - Sorting, matching, placement puzzles
+  - **Mix-and-Match System** - Connection-based, relationship matching
 
 - **📊 Built-in Progress Tracking**
   - Automatic attempt counting
@@ -41,7 +41,7 @@ A flexible, plug-and-play learning framework for **Godot 4** that enables rapid 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/CIELO-G_Learning_Framework.git
+   git clone https://github.com/arthifact/CIELO-G-Learning-Framework.git
    ```
 
 2. **Open in Godot:**
@@ -56,20 +56,38 @@ A flexible, plug-and-play learning framework for **Godot 4** that enables rapid 
 
 ## 📝 Creating Your First Minigame
 
-### 1. Choose a Game System
+### 1. Choose a Game System Template
 
-The framework provides three ready-to-use game systems:
+The framework provides three base systems to inherit from:
 
-#### Clickable System (`S_Clickable/`)
-Perfect for: Multiple choice questions, selection-based games
+- **`S_Clickable/ClickableSystem.tscn`** - For multiple choice, selection-based games
+- **`S_DragAndDrop/DragAndDropSystem.tscn`** - For sorting, matching, placement puzzles
+- **`S_MixAndMatch/MixAndMatchSystem.tscn`** - For connection-based, relationship matching
 
-#### Drag-and-Drop System (`S_DragAndDrop/`)
-Perfect for: Sorting tasks, categorization, placement puzzles
+### 2. Create Your Minigame Scene
 
-#### Mix-and-Match System (`S_MixAndMatch/`)
-Perfect for: Relationship matching, connection puzzles
+1. **Create a new folder** under `Module/Play/`:
+   ```
+   Module/Play/Minigame_1/
+   ```
 
-### 2. Add Your Minigame
+2. **Create an Assets folder** for your minigame visuals:
+   ```
+   Module/Play/Minigame_1/Assets/
+   ```
+   Place all images, sounds, and resources specific to this minigame here.
+
+3. **Create an inherited scene**:
+   - In Godot, right-click one of the system scenes (e.g., `S_Clickable/ClickableSystem.tscn`)
+   - Select "New Inherited Scene"
+   - Save it as `Module/Play/Minigame_1/minigame_1.tscn`
+
+4. **Customize your minigame**:
+   - Add your visual elements
+   - Configure the game objects (see Game System APIs below)
+   - Test your minigame
+
+### 3. Register Your Minigame
 
 Edit `Global/Scripts/Managers/ModuleManager.gd`:
 
@@ -79,7 +97,8 @@ Edit `Global/Scripts/Managers/ModuleManager.gd`:
 # ════════════════════════════════════════════════════════════
 
 const MINIGAMES: Array[String] = [
-    "res://Module/Play/YourGame/your_game.tscn",
+    "res://Module/Play/Minigame_1/minigame_1.tscn",
+    "res://Module/Play/Minigame_2/minigame_2.tscn",
     # Add more minigames here
 ]
 
@@ -88,7 +107,7 @@ const MINIGAMES: Array[String] = [
 # ════════════════════════════════════════════════════════════
 ```
 
-### 3. Customize Learning Content
+### 4. Customize Learning Content
 
 Edit `Module/Learn/ExplanationSystem.gd` to add your educational dialogue:
 
@@ -110,7 +129,7 @@ CIELO-G_Learning_Framework/
 ├── Global/                    # Shared resources and scripts
 │   ├── Assets/               # Fonts, audio, characters, themes
 │   └── Scripts/              
-│       ├── Managers/         # Core game management
+│       ├── Managers/         # Core game management (ModuleManager)
 │       ├── SetName/          # Player name input
 │       ├── ThankYou/         # Completion screens
 │       └── Transitions/      # Scene transition effects
@@ -121,11 +140,27 @@ CIELO-G_Learning_Framework/
 │
 ├── Module/                    # Learning module components
 │   ├── Learn/                # Explanation/dialogue system
-│   └── Certificate/          # Certificate generation
+│   ├── Certificate/          # Certificate generation
+│   └── Play/                 # 👉 YOUR MINIGAMES GO HERE!
+│       ├── Minigame_1/       # First minigame folder
+│       │   ├── Assets/       # Minigame-specific visuals
+│       │   └── minigame_1.tscn  # Inherited scene from system
+│       ├── Minigame_2/       # Second minigame folder
+│       │   ├── Assets/       # Minigame-specific visuals
+│       │   └── minigame_2.tscn  # Inherited scene from system
+│       └── ...               # Add more minigames
 │
-├── S_Clickable/              # Clickable game system
-├── S_DragAndDrop/            # Drag-and-drop game system
-└── S_MixAndMatch/            # Mix-and-match game system
+├── S_Clickable/              # 🎯 Clickable game system (BASE)
+│   ├── ClickableSystem.tscn  # Inherit from this
+│   └── Prefabs/              # Clickable prefab objects
+│
+├── S_DragAndDrop/            # 🎯 Drag-and-drop game system (BASE)
+│   ├── DragAndDropSystem.tscn  # Inherit from this
+│   └── Prefabs/              # Draggable & Source prefabs
+│
+└── S_MixAndMatch/            # 🎯 Mix-and-match game system (BASE)
+    ├── MixAndMatchSystem.tscn  # Inherit from this
+    └── Prefabs/              # Match prefab objects
 ```
 
 ## 🎯 Game System APIs
