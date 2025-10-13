@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b636qsix7fxm6"]
+
+[ext_resource type="Script" uid="uid://bby2eferdarav" path="res://S_DragAndDrop/Prefabs/Draggable/Draggable.gd" id="1_53f6l"]
+[ext_resource type="AudioStream" uid="uid://bkx8latlliuw4" path="res://Global/Assets/Audio/SFX/click.ogg" id="2_sr3wv"]
+
+[node name="Draggable" type="Area2D"]
+script = ExtResource("1_53f6l")
+outline_color = null
+snap_on_drop = null
+return_to_origin = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_sr3wv")
+volume_db = 20.0

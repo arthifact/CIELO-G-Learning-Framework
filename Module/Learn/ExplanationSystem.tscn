@@ -1,0 +1,159 @@
+[gd_scene load_steps=12 format=3 uid="uid://chprvwfixox2y"]
+
+[ext_resource type="Theme" uid="uid://bbmml6r7gt31l" path="res://Global/Assets/Theme/explanation.theme" id="1_0yb4v"]
+[ext_resource type="Script" uid="uid://cnath05gwn4bx" path="res://Module/Learn/ExplanationSystem.gd" id="2_vffnt"]
+[ext_resource type="Shader" uid="uid://cs15e2hgd2lan" path="res://Global/Assets/Shaders/sliding_background.gdshader" id="3_2xxr4"]
+[ext_resource type="Texture2D" uid="uid://bwsoudteh0yub" path="res://Global/Assets/Shaders/bubble_pattern.png" id="4_h7atk"]
+[ext_resource type="Texture2D" uid="uid://b1880ea2bcr1s" path="res://Global/Assets/Characters/kat.png" id="5_v7uwi"]
+[ext_resource type="Texture2D" uid="uid://ddespi3xu4gvx" path="res://Global/Assets/Expressions/emotion_regular.png" id="6_u6bbk"]
+[ext_resource type="Theme" uid="uid://wp8ddjys7ug4" path="res://Global/Assets/Theme/mini_menu.theme" id="7_hms5u"]
+[ext_resource type="Script" uid="uid://cbff1we6mnpgc" path="res://Menu/Buttons/home_button.gd" id="8_q5mue"]
+[ext_resource type="FontFile" uid="uid://bket4wvordedt" path="res://Global/Assets/Fonts/Garet-Book.ttf" id="9_0wdml"]
+[ext_resource type="AudioStream" uid="uid://56s1ptpelpjn" path="res://Global/Assets/Audio/Voice/human_vel-002.wav" id="9_lvpss"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efgpg"]
+shader = ExtResource("3_2xxr4")
+shader_parameter/pattern_sampler = ExtResource("4_h7atk")
+shader_parameter/bg_color = Color(0.9607843, 0.96862745, 0.93333334, 1)
+shader_parameter/pattern_color = Color(0.76655537, 0.89705044, 0.92530626, 1)
+shader_parameter/pattern_size = 512.0
+
+[node name="ExplanationSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0yb4v")
+script = ExtResource("2_vffnt")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_efgpg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Body" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.425
+anchor_bottom = 1.0
+offset_top = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_v7uwi")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="Expression" type="TextureRect" parent="Body"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_u6bbk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.425
+anchor_right = 1.0
+anchor_bottom = 0.489
+offset_top = 192.0
+offset_right = -128.0
+offset_bottom = -384.16
+size_flags_horizontal = 3
+theme = ExtResource("1_0yb4v")
+bbcode_enabled = true
+fit_content = true
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Image" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PrevButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -96.0
+offset_right = -167.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_0yb4v")
+text = "Prev"
+metadata/_edit_lock_ = true
+
+[node name="NextButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -96.0
+offset_right = -23.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_0yb4v")
+text = "Next"
+metadata/_edit_lock_ = true
+
+[node name="HomeButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 79.0
+grow_horizontal = 0
+theme = ExtResource("7_hms5u")
+text = "X"
+script = ExtResource("8_q5mue")
+metadata/_edit_lock_ = true
+
+[node name="Progress" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 1016.0
+offset_right = 154.0
+offset_bottom = 1064.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_0wdml")
+theme_override_font_sizes/font_size = 32
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_lvpss")
+volume_db = -1.0

@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdheh4b2fkeqx"]
+
+[ext_resource type="Theme" uid="uid://wp8ddjys7ug4" path="res://Global/Assets/Theme/mini_menu.theme" id="1_yb5c1"]
+[ext_resource type="FontFile" uid="uid://cvexbowghtgtn" path="res://Global/Assets/Fonts/SpaceMono-Regular.ttf" id="2_hpp6c"]
+[ext_resource type="Script" uid="uid://bf5uyjof2w4b0" path="res://Module/Certificate/get_name.gd" id="3_hpp6c"]
+[ext_resource type="Script" uid="uid://cbff1we6mnpgc" path="res://Menu/Buttons/home_button.gd" id="4_ddu3f"]
+[ext_resource type="AudioStream" uid="uid://brqtapx33p20p" path="res://Global/Assets/Audio/SFX/bubble-pop.ogg" id="6_hpp6c"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_27rq6"]
+load_path = "res://.godot/imported/certificate.png-56bf85d08fb2a0bf5b9baf95eb3865eb.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_hpp6c"]
+font = ExtResource("2_hpp6c")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="Certificate" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Certificate" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_27rq6")
+
+[node name="GetNameLabel" type="Label" parent="Canvas"]
+offset_left = 584.0
+offset_top = 556.0
+offset_right = 1336.0
+offset_bottom = 652.0
+text = "wwwwwwwwwwwwwwwwwww"
+label_settings = SubResource("LabelSettings_hpp6c")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_hpp6c")
+
+[node name="Finish" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -64.0
+offset_right = -40.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_yb5c1")
+text = "Finish"
+script = ExtResource("4_ddu3f")
+
+[node name="CertificateAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hpp6c")
+autoplay = true

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2g20bsbu0fnp"]
+
+[ext_resource type="PackedScene" uid="uid://y4ahwwt7cmbh" path="res://Menu/Home/PlayButton/play.tscn" id="1_bjmq3"]
+[ext_resource type="PackedScene" uid="uid://bw7i4d6msjgbc" path="res://Menu/Home/LearnButton/learn.tscn" id="2_vo4v5"]
+[ext_resource type="Script" uid="uid://0vkkj1ug0d1n" path="res://Menu/Home/Backgrounds/background.gd" id="2_xbftd"]
+[ext_resource type="AudioStream" uid="uid://brqtapx33p20p" path="res://Global/Assets/Audio/SFX/bubble-pop.ogg" id="4_otbab"]
+
+[node name="Home" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_xbftd")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Buttons" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Learn" parent="Buttons" instance=ExtResource("2_vo4v5")]
+position = Vector2(1153, 801)
+metadata/_edit_lock_ = true
+
+[node name="Play" parent="Buttons" instance=ExtResource("1_bjmq3")]
+position = Vector2(1576, 801)
+metadata/_edit_lock_ = true
+
+[node name="HomeAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_otbab")
+autoplay = true

@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://2wqtqhdg1wyb"]
+
+[ext_resource type="Texture2D" uid="uid://daaxqpmjburmv" path="res://Global/Scripts/ThankYou/Background/bg.png" id="1_i1mst"]
+[ext_resource type="Script" uid="uid://bm1pt3d1ksm61" path="res://Global/Scripts/ThankYou/Background/background.gd" id="2_i1mst"]
+[ext_resource type="Theme" uid="uid://wp8ddjys7ug4" path="res://Global/Assets/Theme/mini_menu.theme" id="3_ae82n"]
+[ext_resource type="Script" uid="uid://cbff1we6mnpgc" path="res://Menu/Buttons/home_button.gd" id="4_i1mst"]
+[ext_resource type="AudioStream" uid="uid://brqtapx33p20p" path="res://Global/Assets/Audio/SFX/bubble-pop.ogg" id="5_7shk0"]
+
+[node name="ThankYou" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="RealBackgound" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i1mst")
+
+[node name="Background" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_i1mst")
+
+[node name="Finish" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -64.0
+offset_right = -40.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_ae82n")
+text = "Finish"
+script = ExtResource("4_i1mst")
+
+[node name="ThankyouAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7shk0")
+autoplay = true

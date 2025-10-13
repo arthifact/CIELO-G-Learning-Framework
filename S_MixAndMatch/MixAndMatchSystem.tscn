@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c55i83qgdk2rn"]
+
+[ext_resource type="Script" uid="uid://cmgwolk63r732" path="res://S_MixAndMatch/MixAndMatchManager.gd" id="1_sr55p"]
+[ext_resource type="PackedScene" uid="uid://die74fxa8v3mq" path="res://Menu/MenuBar/control.tscn" id="2_fwey5"]
+
+[node name="MixAndMatchSystem" type="Node2D"]
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("1_sr55p")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" parent="Canvas" instance=ExtResource("2_fwey5")]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="LineLayer" type="Node2D" parent="Objects"]

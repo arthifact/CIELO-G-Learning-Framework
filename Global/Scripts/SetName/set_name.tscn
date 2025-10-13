@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1rjx14j3vhcy"]
+
+[ext_resource type="Texture2D" uid="uid://d12iw5guf3ni7" path="res://Global/Scripts/SetName/bg.png" id="1_ooun8"]
+[ext_resource type="FontFile" uid="uid://bket4wvordedt" path="res://Global/Assets/Fonts/Garet-Book.ttf" id="3_vqslx"]
+[ext_resource type="Theme" uid="uid://wp8ddjys7ug4" path="res://Global/Assets/Theme/mini_menu.theme" id="4_hf7s1"]
+[ext_resource type="Script" uid="uid://cbff1we6mnpgc" path="res://Menu/Buttons/home_button.gd" id="5_ooun8"]
+[ext_resource type="Script" uid="uid://cbk52on50barl" path="res://Global/Scripts/SetName/set_name.gd" id="5_x2vxb"]
+[ext_resource type="AudioStream" uid="uid://dwr3ljidse1w" path="res://Global/Assets/Audio/SFX/winner-game-sound.ogg" id="6_sb3w3"]
+
+[node name="SetName" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ooun8")
+metadata/_edit_lock_ = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65000004
+anchor_top = 0.49600002
+anchor_right = 0.65000004
+anchor_bottom = 0.49600002
+offset_left = -480.00012
+offset_top = 0.3199463
+offset_right = 479.99988
+offset_bottom = 102.31995
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_vqslx")
+theme_override_font_sizes/font_size = 64
+placeholder_text = "Your Name"
+alignment = 1
+max_length = 19
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+metadata/_edit_lock_ = true
+
+[node name="SubmitName" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -64.0
+offset_right = -40.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("4_hf7s1")
+text = "Submit"
+script = ExtResource("5_x2vxb")
+metadata/_edit_lock_ = true
+
+[node name="HomeButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 79.0
+grow_horizontal = 0
+theme = ExtResource("4_hf7s1")
+text = "X"
+script = ExtResource("5_ooun8")
+metadata/_edit_lock_ = true
+
+[node name="CongratsAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_sb3w3")
+autoplay = true
