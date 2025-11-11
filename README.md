@@ -50,7 +50,3 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 ## 🎓 Educational Use
 
 This framework was designed specifically for creating educational content. It has been used by educators and developers to create engaging learning experiences.
-
-## 📄 License
-
-This project is available for educational use only. Please provide attribution when using this framework.
