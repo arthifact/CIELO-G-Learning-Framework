@@ -46,7 +46,3 @@ CIELO-G_Learning_Framework/
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
-
-## 🎓 Educational Use
-
-This framework was designed specifically for creating educational content. It has been used by educators and developers to create engaging learning experiences.
