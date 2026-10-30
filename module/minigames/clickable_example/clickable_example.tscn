@@ -1,0 +1,103 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://coftdmgrv702h" path="res://framework/systems/clickable/clickable_system.tscn" id="1_system"]
+[ext_resource type="PackedScene" uid="uid://dye0irv7mlbtn" path="res://framework/systems/clickable/clickable.tscn" id="2_prefab"]
+[ext_resource type="FontFile" uid="uid://bket4wvordedt" path="res://assets/fonts/Outfit-Regular.ttf" id="font"]
+[ext_resource type="Texture2D" uid="uid://0ifwuu8otepg" path="res://assets/ui/card.png" id="card"]
+
+[sub_resource type="Gradient" id="Gradient_bg"]
+colors = PackedColorArray(0.992, 0.973, 0.937, 1, 0.992, 0.973, 0.937, 1)
+
+[sub_resource type="GradientTexture2D" id="Background"]
+gradient = SubResource("Gradient_bg")
+
+[sub_resource type="LabelSettings" id="PromptText"]
+font = ExtResource("font")
+font_size = 56
+font_color = Color(0.275, 0.42, 0.361, 1)
+
+[sub_resource type="LabelSettings" id="CardText"]
+font = ExtResource("font")
+font_size = 40
+font_color = Color(0.275, 0.42, 0.361, 1)
+
+[sub_resource type="RectangleShape2D" id="CardShape"]
+size = Vector2(360, 120)
+
+[node name="ClickableExample" instance=ExtResource("1_system")]
+
+[node name="Background" parent="Canvas" index="0"]
+texture = SubResource("Background")
+
+[node name="Prompt" type="Label" parent="Canvas"]
+offset_top = 90.0
+offset_right = 1920.0
+offset_bottom = 190.0
+text = "Which of these is a planet?"
+label_settings = SubResource("PromptText")
+horizontal_alignment = 1
+
+[node name="Earth" parent="Objects" instance=ExtResource("2_prefab")]
+position = Vector2(540, 540)
+is_correct = true
+
+[node name="CollisionShape2D" parent="Objects/Earth" index="0"]
+shape = SubResource("CardShape")
+
+[node name="Sprite2D" parent="Objects/Earth/CanvasGroup" index="0"]
+texture = ExtResource("card")
+
+[node name="Label" type="Label" parent="Objects/Earth/CanvasGroup"]
+offset_left = -180.0
+offset_top = -60.0
+offset_right = 180.0
+offset_bottom = 60.0
+mouse_filter = 2
+text = "Earth"
+label_settings = SubResource("CardText")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Moon" parent="Objects" instance=ExtResource("2_prefab")]
+position = Vector2(960, 540)
+
+[node name="CollisionShape2D" parent="Objects/Moon" index="0"]
+shape = SubResource("CardShape")
+
+[node name="Sprite2D" parent="Objects/Moon/CanvasGroup" index="0"]
+texture = ExtResource("card")
+
+[node name="Label" type="Label" parent="Objects/Moon/CanvasGroup"]
+offset_left = -180.0
+offset_top = -60.0
+offset_right = 180.0
+offset_bottom = 60.0
+mouse_filter = 2
+text = "Moon"
+label_settings = SubResource("CardText")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sun" parent="Objects" instance=ExtResource("2_prefab")]
+position = Vector2(1380, 540)
+
+[node name="CollisionShape2D" parent="Objects/Sun" index="0"]
+shape = SubResource("CardShape")
+
+[node name="Sprite2D" parent="Objects/Sun/CanvasGroup" index="0"]
+texture = ExtResource("card")
+
+[node name="Label" type="Label" parent="Objects/Sun/CanvasGroup"]
+offset_left = -180.0
+offset_top = -60.0
+offset_right = 180.0
+offset_bottom = 60.0
+mouse_filter = 2
+text = "Sun"
+label_settings = SubResource("CardText")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="Objects/Earth"]
+[editable path="Objects/Moon"]
+[editable path="Objects/Sun"]

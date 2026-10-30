@@ -1,48 +1,32 @@
-# 🎮 CIELO-G Learning Framework
+# CIELO-G Learning Framework
 
-A flexible, plug-and-play learning framework for **Godot 4** that enables rapid creation of educational mini-games with built-in progress tracking, certificate generation, and modular game systems.
+A Godot 4 framework for building short, gamified Earth Science lessons for grades 6–12. A lesson (a *module*) pairs an explanation, in which guide characters present animated dialogue and slides, with interactive minigames. Players get instant feedback and can retry any minigame, and passing every minigame on the first try earns a personalized certificate.
 
-## 📁 Project Structure
+Developed in 2025 as undergraduate research at The University of Texas at El Paso (UTEP), supported by the U.S. National Science Foundation through CIELO-G (Award 2228180).
+
+## Run
+
+Open `project.godot` in [Godot 4.5+](https://godotengine.org) and press **F5**. To publish to the web (for example on itch.io), use **Project → Export → Web**, which writes to `build/web/`.
+
+## Layout
 
 ```
-CIELO-G_Learning_Framework/
-├── Global/                    # Shared resources and scripts
-│   ├── Assets/               # Fonts, audio, characters, themes
-│   └── Scripts/              
-│       ├── Managers/         # Core game management (ModuleManager)
-│       ├── SetName/          # Player name input
-│       ├── ThankYou/         # Completion screens
-│       └── Transitions/      # Scene transition effects
-│
-├── Menu/                      # Main menu and navigation
-│   ├── Home/                 # Home screen with play/learn buttons
-│   └── MenuBar/              # Progress bar and navigation
-│
-├── Module/                    # Learning module components
-│   ├── Learn/                # Explanation/dialogue system
-│   ├── Certificate/          # Certificate generation
-│   └── Play/                 # 👉 YOUR MINIGAMES GO HERE!
-│       ├── Minigame_1/       # First minigame folder
-│       │   ├── Assets/       # Minigame-specific visuals
-│       │   └── minigame_1.tscn  # Inherited scene from system
-│       ├── Minigame_2/       # Second minigame folder
-│       │   ├── Assets/       # Minigame-specific visuals
-│       │   └── minigame_2.tscn  # Inherited scene from system
-│       └── ...               # Add more minigames
-│
-├── S_Clickable/              # 🎯 Clickable game system (BASE)
-│   ├── ClickableSystem.tscn  # Inherit from this
-│   └── Prefabs/              # Clickable prefab objects
-│
-├── S_DragAndDrop/            # 🎯 Drag-and-drop game system (BASE)
-│   ├── DragAndDropSystem.tscn  # Inherit from this
-│   └── Prefabs/              # Draggable & Source prefabs
-│
-└── S_MixAndMatch/            # 🎯 Mix-and-match game system (BASE)
-    ├── MixAndMatchSystem.tscn  # Inherit from this
-    └── Prefabs/              # Match prefab objects
+module/      the lesson: module.gd, slides, minigames (edit this)
+framework/   menu, explanation, certificate and the three interaction systems
+assets/      art, audio, fonts, shaders and themes
 ```
 
-## 🤝 Contributing
+## Add a module
 
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
+1. **Explanation.** Edit `DIALOGUE` in `module/module.gd`. Each line names a character and an expression (PNG files in `assets/characters` and `assets/expressions`) plus BBCode text, or shows a full-screen `slide`.
+2. **Minigames.** `module/minigames/` has one small example per system to copy. In the FileSystem dock, right-click a system scene and choose **New Inherited Scene**, then save it under `module/minigames/<name>/`:
+   - `framework/systems/clickable/clickable_system.tscn`: select the right answer(s). Add `clickable.tscn` instances under `Objects` and tick `is_correct`.
+   - `framework/systems/drag_and_drop/drag_and_drop_system.tscn`: sort items into zones. Add `draggable.tscn` and `drop_zone.tscn` instances, then list each zone's `answers`.
+   - `framework/systems/mix_and_match/mix_and_match_system.tscn`: connect pairs with lines. Add `matchable.tscn` instances, then set `options`, `answers` and the line limits.
+
+   Give each object a sprite and a collision shape, and set a background on `Canvas/Background`.
+3. **Register.** Add each minigame's scene path to `MINIGAMES` in `module/module.gd`.
+
+## Credits
+
+Backgrounds, menu buttons and certificate designed in Canva. The characters, expressions and bubble pattern are original. Sound effects by [Kenney](https://kenney.nl) (CC0). Dialogue voice clip by [unicaegames](https://www.patreon.com/unicaegames). Fonts: [Outfit](https://github.com/Outfitio/Outfit-Fonts) and [Space Mono](https://github.com/googlefonts/spacemono), both under the [SIL Open Font License](assets/fonts/OFL.txt). Code released under the [MIT License](LICENSE).

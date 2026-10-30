@@ -35,6 +35,5 @@ $RECYCLE.BIN/
 # Export presets (optional - uncomment if you don't want to share export settings)
 # export_presets.cfg
 
-# Builds/Exports (optional - uncomment to ignore all exports)
-# builds/
-# exports/
+# Builds/Exports
+build/

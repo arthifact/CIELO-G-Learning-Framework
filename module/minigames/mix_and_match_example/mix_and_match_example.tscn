@@ -1,0 +1,143 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://c55i83qgdk2rn" path="res://framework/systems/mix_and_match/mix_and_match_system.tscn" id="1_system"]
+[ext_resource type="PackedScene" uid="uid://bw6bt5mlgyhws" path="res://framework/systems/mix_and_match/matchable.tscn" id="2_prefab"]
+[ext_resource type="FontFile" uid="uid://bket4wvordedt" path="res://assets/fonts/Outfit-Regular.ttf" id="font"]
+[ext_resource type="Texture2D" uid="uid://0ifwuu8otepg" path="res://assets/ui/card.png" id="card"]
+
+[sub_resource type="Gradient" id="Gradient_bg"]
+colors = PackedColorArray(0.992, 0.973, 0.937, 1, 0.992, 0.973, 0.937, 1)
+
+[sub_resource type="GradientTexture2D" id="Background"]
+gradient = SubResource("Gradient_bg")
+
+[sub_resource type="LabelSettings" id="PromptText"]
+font = ExtResource("font")
+font_size = 56
+font_color = Color(0.275, 0.42, 0.361, 1)
+
+[sub_resource type="LabelSettings" id="CardText"]
+font = ExtResource("font")
+font_size = 40
+font_color = Color(0.275, 0.42, 0.361, 1)
+
+[sub_resource type="RectangleShape2D" id="CardShape"]
+size = Vector2(360, 120)
+
+[node name="MixAndMatchExample" instance=ExtResource("1_system")]
+
+[node name="Background" parent="Canvas" index="0"]
+texture = SubResource("Background")
+
+[node name="Prompt" type="Label" parent="Canvas"]
+offset_top = 90.0
+offset_right = 1920.0
+offset_bottom = 190.0
+text = "Match each layer of the Earth to its description."
+label_settings = SubResource("PromptText")
+horizontal_alignment = 1
+
+[node name="Crust" parent="Objects" node_paths=PackedStringArray("options", "answers") instance=ExtResource("2_prefab")]
+position = Vector2(560, 420)
+max_incoming = 0
+options = [NodePath("../HotCenter"), NodePath("../ThinOuterLayer")]
+answers = [NodePath("../ThinOuterLayer")]
+
+[node name="CollisionShape2D" parent="Objects/Crust" index="0"]
+shape = SubResource("CardShape")
+
+[node name="Sprite2D" parent="Objects/Crust/CanvasGroup" index="0"]
+texture = ExtResource("card")
+
+[node name="Label" type="Label" parent="Objects/Crust/CanvasGroup"]
+offset_left = -180.0
+offset_top = -60.0
+offset_right = 180.0
+offset_bottom = 60.0
+mouse_filter = 2
+text = "Crust"
+label_settings = SubResource("CardText")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pivot" parent="Objects/Crust" index="1"]
+position = Vector2(180, 0)
+
+[node name="Core" parent="Objects" node_paths=PackedStringArray("options", "answers") instance=ExtResource("2_prefab")]
+position = Vector2(560, 680)
+max_incoming = 0
+options = [NodePath("../HotCenter"), NodePath("../ThinOuterLayer")]
+answers = [NodePath("../HotCenter")]
+
+[node name="CollisionShape2D" parent="Objects/Core" index="0"]
+shape = SubResource("CardShape")
+
+[node name="Sprite2D" parent="Objects/Core/CanvasGroup" index="0"]
+texture = ExtResource("card")
+
+[node name="Label" type="Label" parent="Objects/Core/CanvasGroup"]
+offset_left = -180.0
+offset_top = -60.0
+offset_right = 180.0
+offset_bottom = 60.0
+mouse_filter = 2
+text = "Core"
+label_settings = SubResource("CardText")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pivot" parent="Objects/Core" index="1"]
+position = Vector2(180, 0)
+
+[node name="HotCenter" parent="Objects" instance=ExtResource("2_prefab")]
+position = Vector2(1360, 420)
+max_outgoing = 0
+
+[node name="CollisionShape2D" parent="Objects/HotCenter" index="0"]
+shape = SubResource("CardShape")
+
+[node name="Sprite2D" parent="Objects/HotCenter/CanvasGroup" index="0"]
+texture = ExtResource("card")
+
+[node name="Label" type="Label" parent="Objects/HotCenter/CanvasGroup"]
+offset_left = -180.0
+offset_top = -60.0
+offset_right = 180.0
+offset_bottom = 60.0
+mouse_filter = 2
+text = "Hot center"
+label_settings = SubResource("CardText")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pivot" parent="Objects/HotCenter" index="1"]
+position = Vector2(-180, 0)
+
+[node name="ThinOuterLayer" parent="Objects" instance=ExtResource("2_prefab")]
+position = Vector2(1360, 680)
+max_outgoing = 0
+
+[node name="CollisionShape2D" parent="Objects/ThinOuterLayer" index="0"]
+shape = SubResource("CardShape")
+
+[node name="Sprite2D" parent="Objects/ThinOuterLayer/CanvasGroup" index="0"]
+texture = ExtResource("card")
+
+[node name="Label" type="Label" parent="Objects/ThinOuterLayer/CanvasGroup"]
+offset_left = -180.0
+offset_top = -60.0
+offset_right = 180.0
+offset_bottom = 60.0
+mouse_filter = 2
+text = "Thin outer layer"
+label_settings = SubResource("CardText")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pivot" parent="Objects/ThinOuterLayer" index="1"]
+position = Vector2(-180, 0)
+
+[editable path="Objects/Crust"]
+[editable path="Objects/Core"]
+[editable path="Objects/HotCenter"]
+[editable path="Objects/ThinOuterLayer"]
