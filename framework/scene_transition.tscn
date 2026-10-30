@@ -1,0 +1,27 @@
+[gd_scene load_steps=9 format=3 uid="uid://ve01x6lhoa4s"]
+
+[ext_resource type="Script" uid="uid://d2lqvwefbgyko" path="res://framework/scene_transition.gd" id="1_jlyoa"]
+[ext_resource type="Shader" uid="uid://b6lhmw11m1qft" path="res://assets/shaders/scene_transition.gdshader" id="2_shadr"]
+[ext_resource type="Texture2D" uid="uid://buw03o04pin2k" path="res://assets/backgrounds/transition_1.png" id="3_tx1"]
+[ext_resource type="Texture2D" uid="uid://cw66o6tvnjh4x" path="res://assets/backgrounds/transition_2.png" id="4_tx2"]
+[ext_resource type="Texture2D" uid="uid://ou18864i0ymw" path="res://assets/backgrounds/transition_3.png" id="5_tx3"]
+[ext_resource type="Texture2D" uid="uid://dv5x52fqicby1" path="res://assets/backgrounds/transition_4.png" id="6_tx4"]
+[ext_resource type="Texture2D" uid="uid://c3q4iepxtgow2" path="res://assets/backgrounds/transition_5.png" id="7_tx5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gfpi"]
+shader = ExtResource("2_shadr")
+shader_parameter/progress = 1.0
+shader_parameter/diamondPixelSize = 10.0
+
+[node name="SceneTransition" type="CanvasLayer"]
+script = ExtResource("1_jlyoa")
+textures = Array[Texture2D]([ExtResource("3_tx1"), ExtResource("4_tx2"), ExtResource("5_tx3"), ExtResource("6_tx4"), ExtResource("7_tx5")])
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_3gfpi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

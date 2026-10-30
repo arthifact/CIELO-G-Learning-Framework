@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://2wqtqhdg1wyb"]
+
+[ext_resource type="Texture2D" uid="uid://daaxqpmjburmv" path="res://assets/backgrounds/thank_you.png" id="1_i1mst"]
+[ext_resource type="Script" uid="uid://0vkkj1ug0d1n" path="res://framework/random_texture.gd" id="2_i1mst"]
+[ext_resource type="Theme" uid="uid://wp8ddjys7ug4" path="res://assets/themes/ui.theme" id="3_ae82n"]
+[ext_resource type="Script" uid="uid://cbff1we6mnpgc" path="res://framework/home_button.gd" id="4_i1mst"]
+[ext_resource type="Texture2D" uid="uid://d2bpv5s0dww4m" path="res://assets/backgrounds/thank_you_1.png" id="6_bg1"]
+[ext_resource type="Texture2D" uid="uid://g7d72okly50g" path="res://assets/backgrounds/thank_you_2.png" id="7_bg2"]
+[ext_resource type="Texture2D" uid="uid://b3b22jrg34mbu" path="res://assets/backgrounds/thank_you_3.png" id="8_bg3"]
+[ext_resource type="Texture2D" uid="uid://cdw7st571ndhq" path="res://assets/backgrounds/thank_you_4.png" id="9_bg4"]
+[ext_resource type="Texture2D" uid="uid://dje15n7v05hxp" path="res://assets/backgrounds/thank_you_5.png" id="10_bg5"]
+[ext_resource type="AudioStream" uid="uid://brqtapx33p20p" path="res://assets/audio/bubble_pop.ogg" id="5_7shk0"]
+
+[node name="ThankYou" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Frame" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i1mst")
+
+[node name="Background" type="TextureRect" parent="Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_i1mst")
+textures = Array[Texture2D]([ExtResource("6_bg1"), ExtResource("7_bg2"), ExtResource("8_bg3"), ExtResource("9_bg4"), ExtResource("10_bg5")])
+
+[node name="Finish" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -64.0
+offset_right = -40.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_ae82n")
+text = "Finish"
+script = ExtResource("4_i1mst")
+
+[node name="ThankYouAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7shk0")
+autoplay = true
