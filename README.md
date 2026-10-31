@@ -23,4 +23,4 @@ Everything you edit is in `module/`.
 
 ## Credits
 
-Characters by Gabriel Alonso. Sounds by [Kenney](https://kenney.nl) and [unicaegames](https://www.patreon.com/unicaegames). Fonts under the [OFL](assets/fonts/OFL.txt). Code under the [MIT License](LICENSE).
+Characters by Gabriel Alonso. Sounds by [Kenney](https://kenney.nl). Fonts under the [OFL](assets/fonts/OFL.txt). Code under the [MIT License](LICENSE).
